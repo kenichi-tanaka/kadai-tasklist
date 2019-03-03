@@ -1,6 +1,23 @@
 <% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <%= form_for(@task) do |f| %>
+        <div class="form-group">
+         <%= f.label :content, class:'control-label' %>
+　　　　 <%= f.text_field :content, class: 'form-control', row:2 %>
+        </div>
 
-<%= render 'tasks/form', task: @task %>
+        <div class="form-group">
+         <%= f.label :status, class:'control-label'  %>
+         <%= f.text_field :status, class: 'form-control', row:1 %>
+        </div>
+         <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-xs-8">
+      <%= render 'tasks/tasks', tasks: @tasks %>
+    </div>
+  </div>
 
 <% else %>
 
