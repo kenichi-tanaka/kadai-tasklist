@@ -20,6 +20,7 @@ class TasksController < ApplicationController
           flash[:success] = 'Task が正常に投稿されました'
           redirect_to @task
       else
+          @tasks = current_user.tasks.order('created_at DESC').page(params[:page])
           flash[:danger] = 'Taskの投稿に失敗しました'
           render 'toppages/index'
       end
